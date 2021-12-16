@@ -1,7 +1,11 @@
 #!/usr/bin/env python
-
+####################################
+# Author:
+# Saransh Jindal
+# jindalsaransh@gmail.com
+# using ROS Indigo on FireBird VI by NexRobotics
 #######################################################
-# This script will subscripe to the following topics:
+# This script will subscribe to the following topics:
 # 1. arduino_dist - data from arduino ultrasonic sensor that reads dist to the floor
 # 2. ros0xrobot/sonar - data from the firebird inbuilt sonars
 # 3. ros0xrobot/mqtt_vel - data from mqtt server that will be served by mqtt_conv
@@ -20,9 +24,9 @@
 # 			7 0 3 
 # 			6 5 4
 # 
-# 
-# 
-# 
+# After checking for obstacles or cliffs in the direction of the robot's movement,
+# we take decision on whether we wish to let the robot move or not, or in the case it is moving, to stop it.
+# The twist message is published on the topic `ros0xrobot/cmd_vel`.
 # 
 # 
 # 
@@ -39,6 +43,7 @@ from geometry_msgs.msg import Twist
 
 
 global pub
+pub = None
 twist_zero_msg = Twist()
 
 class Server:
@@ -206,5 +211,3 @@ def cliff_listener():
 
 if __name__=='__main__':
 	cliff_listener()
-
-# PointCloud.points

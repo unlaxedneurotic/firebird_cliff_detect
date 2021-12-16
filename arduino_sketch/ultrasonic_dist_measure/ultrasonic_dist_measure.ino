@@ -27,6 +27,8 @@ ros::NodeHandle nh;
 std_msgs::Float32 dist_msg;
 
 ros::Publisher dist_pub("arduino_dist", &dist_msg);
+// you can change the publisher topic to be anything
+// just ensure that receiver endpoints on ROS host are also changed
 
 
 void setup() {
