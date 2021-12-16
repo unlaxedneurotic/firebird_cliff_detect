@@ -33,17 +33,17 @@ We also need to run a rosserial node on the host robot to deserialize the data t
 Contains the script `talker.py`
 It is an mqtt client that connects to an mqtt server and subscribes to the specified topic on which we send the movement commands via the android application or any other mqtt publisher. The data that is published on the server must be in json in the following format:
 ```json
-    "twist_message": {
-        "linear":{
-            "x": 0.2,
-            "y": 0.0,
-            "z": 0.0
-        },
-        "angular":{
-            "x": 0.0,
-            "y": 0.0,
-            "z": 0.2
-        }
+"twist_message": {
+    "linear":{
+        "x": 0.2,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "angular":{
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.2
     }
+}
 ```
 The received json data will be converted into a `Twist` message and published onto the topic of your choice. Currently it is being published onto `/ros0xrobot/mqtt_vel`
