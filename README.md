@@ -55,7 +55,7 @@ It is an mqtt client that connects to an mqtt server and subscribes to the speci
 The received json data will be converted into a `Twist` message and published onto the topic of your choice. Currently it is being published onto `/ros0xrobot/mqtt_vel`
 
 ## Installation and Dependencies
-We assume that we have a working ROS installation. For each ROS package, you need to copy the packages to your ROS workspace and then run `catkin_make`. 
+We assume that we have a working ROS installation. For each ROS package, you need to create a package in your ROS workspace, copy the scripts folder there and then run `catkin_make`. 
 
 To run `mqtt_conv`, ensure to install the paho-mqtt client using `pip install paho-mqtt`
 
