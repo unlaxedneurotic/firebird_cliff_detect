@@ -48,17 +48,7 @@ twist_zero_msg = Twist()
 
 class Server:
 
-	#checklist for each direction, enter the index of sensor we wish to check
-	sensor_check_list = {
-		1:[1,3],
-		2:[3,4],
-		3:[3,4,5],
-		4:[4,5,6],
-		5:[5,6,7],
-		6:[6,7,0],
-		7:[7,0,1],
-		8:[0,1],
-	}
+	# mapping between sensor positions and corresponding indices
 	sensor_directions = {
 		2:"front",
 		3:"front right",
@@ -69,6 +59,8 @@ class Server:
 		0:"left",
 		1:"front left",
 	}
+
+	# mapping between movement directions and corresponding indices
 	movement_directions = {
 		0:"stop",
 		1:"front",
@@ -81,6 +73,23 @@ class Server:
 		8:"front left",
 	}
 	
+	"""
+		Checklist for each direction, enter the index of sensor we wish to check
+		It is a mapping between direction and the list of sensors as per the previous dicts.
+		Each entry is of the type: <movement_direction>: <list of sensors>
+		eg: in the `front right` direction, check for sensors `front right` and `right`
+	
+	"""
+	sensor_check_list = {
+		1:[1,3],
+		2:[3,4],
+		3:[3,4,5],
+		4:[4,5,6],
+		5:[5,6,7],
+		6:[6,7,0],
+		7:[7,0,1],
+		8:[0,1],
+	}	
 
 	def __init__(self, cliff_threshold = 0.03):
 		self.cliff_depth = None
@@ -93,8 +102,9 @@ class Server:
 		self.obstacle_threshold = 0.3
 
 	def check_obstacle_safety(self):
-		# checks if it is safe to move in the direction the robot is currently moving
-		
+		"""
+		Checks if it is safe to move in the direction the robot is currently moving
+		"""
 		mode = self.movement_mode
 
 		if(mode == 0):
@@ -112,6 +122,9 @@ class Server:
 		return True			
 			
 	def check_cliff_safety(self):
+		"""
+		Checks whether the sensor is detecting a cliff or not
+		"""
 		if self.cliff_depth is None:
 			return True
 		if self.movement_mode in [1,2,8]:
