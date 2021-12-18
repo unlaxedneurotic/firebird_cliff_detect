@@ -67,7 +67,7 @@ sudo apt-get install ros-<ros-distribution>-rosserial
 ``` 
 
 Follow this schema to connect the sensor to the arduino:
-[schema](/diagram/arduino_schema.jpg)
+![schema](/diagram/arduino_schema.jpg)
 
 Upload the sketch to your arduino board using this [link](https://www.arduino.cc/en/Tutorial/getting-started-with-ide-v2/ide-v2-uploading-a-sketch).
 
